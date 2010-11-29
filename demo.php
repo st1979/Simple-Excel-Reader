@@ -8,11 +8,15 @@
 
 require_once 'inc.common.php';
 
-$objExcel = new ExcelReader();
+$objExcel = new SimpleExcelReader();
 
-$objExcel->read("demo.xls")
-
+// This needs to be an Excel 2003 file. No XLSX is supported for now.
+$objExcel->read("demo.xls");
 
 $arrHeaders = $objExcel->getHeaders();
+
+echo "<pre>";
+print_r($arrHeaders);
+echo "</pre>";
 
 ?>
