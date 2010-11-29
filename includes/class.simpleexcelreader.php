@@ -1,16 +1,21 @@
 <?php
 /**
- * Simple Excel Reader class
+ * Simple Excel Reader class. This is a wrapper class for the PEAR library Spreadsheet_Excel_Reader
  *
- * @version 0.1
+ * @version 0.1 alfa
  * @author Robin van Baalen <robin@stylr.nl>
+ * @package Simple Excel Reader
+ * @category File handling
  *
  */
 
 class SimpleExcelReader extends Spreadsheet_Excel_Reader {
 
+    /**
+     * Nothing to construct, yet.
+     */
     public function __construct(){
-
+        parent::Spreadsheet_Excel_Reader();
     }
 
     /**
@@ -18,8 +23,8 @@ class SimpleExcelReader extends Spreadsheet_Excel_Reader {
      * @param string $sFileName Full path to the Excel file to read
      * @return object $this The current instance. Chainable method.
      */
-    public function read($sFileName) {
-        parent::read($sFileName);
+    public function read($strFileName) {
+        parent::read($strFileName);
 
         return $this;
     }
@@ -43,7 +48,19 @@ class SimpleExcelReader extends Spreadsheet_Excel_Reader {
     }
 
     public function getHeaders(){
-        
+        $arrReturn = array();
+
+        if(is_array($this->sheet)){
+            $arrReturn = $this->sheet;
+        }
+        else {
+            if(!is_array($this->sheets)){
+                $this->sheets = $this->getSheets();
+            }
+            else {
+                $this->currentSheet = $this->getSheet();
+            }
+        }
     }
 
 }
