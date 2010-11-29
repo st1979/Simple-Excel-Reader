@@ -1,4 +1,7 @@
 <?php
+/**
+ * Common include file. Include this file to enable auto loading of classes.
+ */
 
 $_cfg["paths"]["basepath"] 			= dirname(__FILE__) . "/";
 $_cfg["paths"]["includes"]			= $_cfg["paths"]["basepath"] . "includes/";
@@ -7,7 +10,7 @@ $_cfg["paths"]["libraries"]			= $_cfg["paths"]["basepath"] . "libraries/";
 $_cfg["paths"]["excelreader"]				= $_cfg["paths"]["libraries"] . "ExcelReader/";
 
 //*** Setting the default include paths
-set_include_path("/" . PATH_SEPARATOR . $_cfg["paths"]["includes"] . PATH_SEPARATOR . $_cfg["paths"]["imageresizer"] . PATH_SEPARATOR . $_cfg["paths"]["vfb"] . PATH_SEPARATOR . $_cfg["paths"]["libraries"] . PATH_SEPARATOR . $_cfg["paths"]["pear"] . PATH_SEPARATOR . $_cfg["paths"]["htmlmimemail"]);
+set_include_path("/" . PATH_SEPARATOR . $_cfg["paths"]["includes"] . PATH_SEPARATOR . $_cfg["paths"]["excelreader"] . PATH_SEPARATOR . $_cfg["paths"]["libraries"]);
 
 //*** Autoloading functions, PHP5 > only.
 function __autoload($class_name) {
